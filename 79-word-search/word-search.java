@@ -1,28 +1,29 @@
 class Solution {
     public boolean exist(char[][] board, String word) {
-        int m = board.length, n = board[0].length;
-
-        for(int i = 0; i < m; i++) {
-            for(int j = 0; j < n; j++) {
-                if(dfs(board, i, j, word, 0)) return true;
-            }
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[0].length; j++) {
+                if(helper(board, word, 0, i, j)) return true; 
+            } 
         }
+
         return false;
     }
 
-    private boolean dfs(char[][] board, int row, int col, String word, int index) {
-        if(index == word.length()) return true;
+    private boolean helper(char[][] board, String word, int n, int row, int col) {
+        if(col >= board[0].length || col < 0 || row < 0 || row >= board.length) return false;
+        if(word.charAt(n) != board[row][col]) return false;
 
-        if(row < 0 || col < 0 || row >= board.length || col >= board[0].length 
-           || board[row][col] != word.charAt(index)) return false;
+        if(n == word.length()-1) return true;
 
         char temp = board[row][col];
+
         board[row][col] = '#';
 
-        boolean found = dfs(board, row+1, col, word, index+1) || dfs(board, row-1, col, word, index+1) || dfs(board, row, col+1, word, index+1) || dfs(board, row, col-1, word, index+1);
+        boolean compute = helper(board, word, n+1, row, col+1) || helper(board, word, n+1, row+1, col) || helper(board, word, n+1, row, col-1) || helper(board, word, n+1, row-1, col);
 
         board[row][col] = temp;
 
-        return found;
+        return compute;
+
     }
 }
