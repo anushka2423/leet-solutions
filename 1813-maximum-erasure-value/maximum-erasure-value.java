@@ -4,13 +4,7 @@ class Solution {
         int maxSum = 0, sum = 0;
         int start = 0;
         for(int end = 0; end < nums.length; end++) {
-            if(set.contains(nums[end])) {
-                while(nums[start] != nums[end]) {
-                    set.remove(nums[start]);
-                    sum -= nums[start];
-                    start++;
-                }
-
+            while(set.contains(nums[end])) {
                 set.remove(nums[start]);
                 sum -= nums[start];
                 start++;
