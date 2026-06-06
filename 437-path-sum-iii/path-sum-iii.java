@@ -24,7 +24,6 @@ class Solution {
     private void solve(TreeNode root, int targetSum, long sum, int[] ans, boolean flag) {
         if(root == null) return;
         if(sum+root.val == targetSum) {
-            System.out.println(root.val);
             ans[0]++;
         }
 
