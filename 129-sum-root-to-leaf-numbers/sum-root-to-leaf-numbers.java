@@ -14,25 +14,20 @@
  * }
  */
 class Solution {
+    int sum = 0;
     public int sumNumbers(TreeNode root) {
-        int[] sum = new int[1];
-        solve(root, sum, 0);
-
-        return sum[0];
+        solve(root, 0);
+        return sum;
     }
 
-    private void solve(TreeNode root, int[] sum, int num) {
+    private void solve(TreeNode root, int prev) {
         if(root == null) return;
-
-        if(root.left == null && root.right == null) {
-            System.out.println(num+"anushka num");
-            sum[0] += num*10+root.val;
-
-            System.out.println(sum[0]+"anushka sum");
+        if(root.left == null && root.right == null){
+            sum += (prev*10+root.val);
             return;
         }
 
-        solve(root.left, sum, num*10+root.val);
-        solve(root.right, sum, num*10+root.val);
+        solve(root.left, prev*10 + root.val);
+        solve(root.right, prev*10 + root.val);
     }
 }
