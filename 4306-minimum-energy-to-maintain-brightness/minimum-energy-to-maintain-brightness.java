@@ -22,8 +22,6 @@ class Solution {
             int start = li.get(0);
             int end = li.get(1);
 
-            System.out.println(start+" "+end);
-
             activeTime += (end-start+1);
         }
 
