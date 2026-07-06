@@ -2,13 +2,16 @@ class Solution {
     public int maxDigitRange(int[] nums) {
         int maxSum = 0;
         int maxRange = 0;
+        int small = 10, large = 0;
+        int rem = 0, temp = 0;
 
         for(int ele : nums) {
-            int small = 10, large = 0;
+            small = 10;
+            large = 0;
 
-            int temp = ele;
+            temp = ele;
             while(temp > 0) {
-                int rem = temp%10;
+                rem = temp%10;
                 small = Math.min(small, rem);
                 large = Math.max(large, rem);
 
