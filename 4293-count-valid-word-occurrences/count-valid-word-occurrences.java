@@ -31,7 +31,6 @@ class Solution {
                 }
 
                 if(ele.charAt(ele.length()-1) != '-') news.append(ele.charAt(ele.length()-1));
-                System.out.println(news); 
 
                 if(news.length() != 0) 
                     map.put(news.toString(), map.getOrDefault(news.toString(), 0)+1);
@@ -40,8 +39,6 @@ class Solution {
                 map.put(ele, map.getOrDefault(ele, 0)+1);
             }
         }
-
-        System.out.println(map); 
 
         int[] ans = new int[queries.length];
 
