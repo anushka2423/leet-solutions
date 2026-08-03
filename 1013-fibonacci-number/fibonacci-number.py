@@ -3,6 +3,7 @@ class Solution:
         if n == 0 or n == 1:
             return n
 
+        @lru_cache(None)
         def solve(n) :
             if(n == 0 or n == 1):
                 return n
