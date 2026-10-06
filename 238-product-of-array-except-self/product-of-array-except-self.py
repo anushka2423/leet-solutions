@@ -1,17 +1,17 @@
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        
-        product = []
-        product.append(1)
-        prev = nums[0]
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        answer = []
 
-        for i in range(1, len(nums)):
-            product.append(prev)
+        prev = 1
+        for i in range(0, len(nums)):
+            answer.append(prev)
             prev *= nums[i]
 
-        prev = nums[len(nums)-1]
-        for i in range(len(nums)-2, -1, -1):
-            product[i] *= prev
+        print(answer)
+
+        prev = 1
+        for i in range(len(nums) - 1, -1, -1):
+            answer[i] *= prev
             prev *= nums[i]
 
-        return product
+        return answer
